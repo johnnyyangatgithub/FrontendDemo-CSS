@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骰子</title>
+    <style>
+        body, html {
+            height: 100%;
+        }
+        body {
+            perspective: 500px;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            position: absolute;
+            transform-origin: 100px 100px -100px;
+            /* 父盒子添加动画效果 */
+            transform-style: preserve-3d;
+        }
+        #box div {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(16, 166, 206, 0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            line-height: 200px;
+            font-size: 50px;
+            border-radius: 20px;
+        }
+        #box .item2 {
+            transform-origin: left center;
+            transform: rotateY(90deg);
+        }
+        #box .item3 {
+            transform-origin: right center;
+            transform: rotateY(-90deg);
+        }
+        #box .item4 {
+            transform-origin: top center;
+            transform: rotateX(-90deg);
+        }
+        #box .item5 {
+            transform-origin: bottom center;
+            transform: rotateX(90deg);
+        }
+        #box .item6 {
+            /* transform-origin: bottom center;不需要旋转，只需要朝向屏幕移动即可，这样就将这句代码拿掉 */
+            transform: translateZ(-200px);
+        }
+        /* 对box添加旋转动画 */
+        @keyframes circle{
+            0% {
+                transform: rotate3d(0, 1, 0, 0deg);
+            }
+            100% {
+                transform: rotate3d(0, 1, 0, 360deg);
+            }
+        }
+        /* 当hover时添加效果 */
+        #box:hover .item1{
+            transform: translateZ(200px)
+        }
+        #box:hover .item2{
+            transform: rotateY(90deg) translateZ(-200px)
+        }
+        #box:hover .item3{
+            transform: rotateY(-90deg) translateZ(-200px)
+        }
+        #box:hover .item4{
+            transform: rotateX(-90deg) translateZ(-200px)
+        }
+        #box:hover .item5{
+            transform: rotateX(90deg) translateZ(-200px)
+        }
+        #box:hover .item6{
+            transform: translateZ(-400px)
+        }
+
+        #box:hover {
+            animation: circle 3s 0.8s linear infinite;
+        }
+
+        #box div {
+            transition: all .5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="item1">●</div>
+        <div class="item2">●●</div>
+        <div class="item3">●●●</div>
+        <div class="item4">●●●●</div>
+        <div class="item5">●●●●●</div>
+        <div class="item6">●●●●●●</div>
+    </div>
+</body>
+</html>

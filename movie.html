@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影上架特效</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        #list {
+            width: 1000px;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin: auto;
+        }
+        .space {
+            width: 300px;
+            height: 100px;
+            margin: auto;
+            /* background-color: lightblue; */
+            perspective: 400px;
+            margin-top: 20px;
+        }
+        .box {
+            transform-style: preserve-3d;
+            transform-origin: 150px 50px -50px;
+            width: 300px; 
+            height: 100px;
+            position: relative;
+            transition: all 2s;
+        }
+        .box:hover {
+            transform: rotateX(90deg);
+        }
+        .box img, .box div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .box div {
+            background-color: #ddd;
+            transform-origin: top center;
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        .box p {
+            word-wrap: break-word;
+        }
+        .box h3, .box p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="list">
+        <!-- 第一层，设置景深 -->
+        <div class="space">
+            <!-- 第二层，设置3d子元素 -->
+            <div class="box">
+                <img src="imgs/1.jpg" alt="">
+                <div>
+                    <h3>澳门风云</h3>
+                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                </div>
+            </div>
+        </div>
+        <!-- 第一层，设置景深 -->
+        <div class="space">
+            <!-- 第二层，设置3d子元素 -->
+            <div class="box">
+                <img src="imgs/2.jpg" alt="">
+                <div>
+                    <h3>改过迁善</h3>
+                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                </div>
+            </div>
+        </div>
+        <!-- 第一层，设置景深 -->
+        <div class="space">
+            <!-- 第二层，设置3d子元素 -->
+            <div class="box">
+                <img src="imgs/3.jpg" alt="">
+                <div>
+                    <h3>balabala</h3>
+                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                </div>
+            </div>
+        </div>
+        <!-- 第一层，设置景深 -->
+        <div class="space">
+            <!-- 第二层，设置3d子元素 -->
+            <div class="box">
+                <img src="imgs/4.jpg" alt="">
+                <div>
+                    <h3>果宝特攻</h3>
+                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                </div>
+            </div>
+        </div>
+        <!-- 第一层，设置景深 -->
+        <div class="space">
+            <!-- 第二层，设置3d子元素 -->
+            <div class="box">
+                <img src="imgs/5.jpg" alt="">
+                <div>
+                    <h3>balabala</h3>
+                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                </div>
+            </div>
+        </div>
+        <!-- 第一层，设置景深 -->
+        <div class="space">
+            <!-- 第二层，设置3d子元素 -->
+            <div class="box">
+                <img src="imgs/6.jpg" alt="">
+                <div>
+                    <h3>balabala</h3>
+                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

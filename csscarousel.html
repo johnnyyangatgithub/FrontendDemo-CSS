@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 轮播图实现</title>
+    <style>
+        div {
+            width: 1200px;
+            height: 500px;
+            margin: 0 auto;
+            /* 处理该盒子的溢出内容 */
+            overflow: hidden;
+        }
+        ul {
+            width: 500%;
+            height: 100%;
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            animation: carousel 10s infinite;
+        }
+        li {
+            height: 1200px;
+            width: 100%;
+        }
+        li img {
+            width: 1200px;
+            height: 500px;
+        }
+        @keyframes carousel {
+            0% {
+                transform: translateX(0px);
+            }
+            /* 设置关键帧的方式设置第二张图片 */
+            10%,20% {
+                transform: translateX(-1200px);
+            }
+            30%, 40% {
+                transform: translateX(-2400px);
+            }
+            50%, 60% {
+                transform: translateX(-3600px);
+            }
+            70%, 80% {
+                transform: translateX(-4800px);
+            }
+            100% {
+                transform: translateX(-6000px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li><img src="imgs/1.jpg" alt=""></li>
+            <li><img src="imgs/2.jpg" alt=""></li>
+            <li><img src="imgs/3.jpg" alt=""></li>
+            <li><img src="imgs/4.jpg" alt=""></li>
+            <li><img src="imgs/5.jpg" alt=""></li>
+            <li><img src="imgs/1.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>
