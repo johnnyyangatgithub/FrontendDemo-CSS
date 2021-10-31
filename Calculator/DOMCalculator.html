@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Document Object Model Demo </title>
+    <link rel="stylesheet" href="css/calculator.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+
+        <div id="top">
+            <div class="point bg-red"></div>
+            <div class="point bg-blue"></div>
+            <div class="point bg-green"></div>
+        </div>
+        <div id="result-box">
+            <input type="text" id="result" readonly="readonly" maxlength="10" />
+        </div>
+
+        <div id="button">
+            <div onclick="clearAll()">AC</div>
+            <div onclick="switchSymbol()">+/-</div>
+            <div onclick="clickSymbol('%')">%</div>
+            <div onclick="clickSymbol('/')">÷</div>
+            <div onclick="clickNumber('7')">7</div>
+            <div onclick="clickNumber('8')">8</div>
+            <div onclick="clickNumber('9')">9</div>
+            <div onclick="clickSymbol('*')">*</div>
+            <div onclick="clickNumber('4')">4</div>
+            <div onclick="clickNumber('5')">5</div>
+            <div onclick="clickNumber('6')">6</div>
+            <div onclick="clickSymbol('-')">-</div>
+            <div onclick="clickNumber('1')">1</div>
+            <div onclick="clickNumber('2')">2</div>
+            <div onclick="clickNumber('3')">3</div>
+            <div onclick="clickSymbol('+')">+</div>
+            <div onclick="clickNumber('0')">0</div>
+            <div onclick="back();">-</div>
+            <div onclick="clickSymbol('.')">.</div>
+            <div onclick="calc()">=</div>
+        </div>
+    </div>
+    <script>
+        var canPoint = true;//是否可以输入小数点
+        /*
+        计算器功能
+        1. input中追加数字和运算符
+          1-1:给数字的 标签设置点击事件
+          1-2:将被点击的数字追加到input的内容里
+    
+        */
+
+        //1 
+        function clickNumber(num) {
+            //把传进来的数字赋给input->更改了input的内容-value
+            var input = document.querySelector('#result');
+            //修改内容
+            input.value += num;
+        }
+        function clickSymbol(symbol) {
+            //把传进来的数字赋给input->更改了input的内容-value
+            var input = document.querySelector('#result');
+            //只能是数字后才能使用运算符
+            //判断最后一个是否是数字
+            var last = input.value.substr(input.value.length - 1, 1);
+            //转为数字，判断是否是NaN,isNaN返回false表示是数字
+            var result = isNaN(parseInt(last));
+            if (result == false) {
+                input.value += symbol;
+            }
+
+        }
+        //计算
+        function calc() {
+            // 把input里的value放入eval并执行，并把执行的结果重新赋给input
+            var input = document.querySelector('#result');
+            var text = input.value;
+            //放入eval中,并把结果赋给input
+            input.value = eval(text);
+        }
+
+        //清理
+        function clearAll() {
+            //清空input里的数据
+            var input = document.querySelector('#result');
+            input.value = "";
+        }
+        //回退
+        function back() {
+            //获取input里的value，去掉最后一个，并放入input中
+            var input = document.querySelector('#result');
+            var text = input.value;
+            var str = text.substr(0, text.length - 1);
+            //吧str重新赋给input
+            input.value = str;
+
+        }
+        //正负
+        function switchSymbol() {
+            //切换正负
+            //判断input内容最前面第一个是否是-，如果是则去掉，不是则加上
+            //获取第一个字符
+            var input = document.querySelector('#result');
+            var first = input.value.substr(0, 1);
+            //判断
+            if (first == "-") {
+                //干掉- 
+                var text = input.value.substr(1);//直接到末尾，可以省略第二个实际参数
+                input.value = text;
+            } else {
+                //添加-
+                input.value = "-" + input.value;
+            }
+        }
+    </script>
+</body>
+
+</html>
